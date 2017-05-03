@@ -17,14 +17,20 @@ class ListItem extends Component {
     componentDidUpdate(){}
     componentWillUnmount(){}
 
+
     render() {
         debugger;
-        const {listId} = this.props;
+        //const {listId} = this.props;
+
+        const ListItem = ({ match }) => (
+            <div>{ match.params.id }</div>
+        );
+        debugger;
 
         return (
             <div>
                 <h3>Описание списка</h3>
-                <div>{listId}</div>
+                {/*<div>{listId}</div>*/}
             </div>
         );
     }

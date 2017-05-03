@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import { Link } from 'react-router-dom';
-import './lists.css'
+import './list.css'
 
-class Lists extends Component {
+class List extends Component {
 
     static propTypes = {};
 
@@ -14,19 +14,22 @@ class Lists extends Component {
     componentWillUnmount(){}
 
     render() {
+        const id = '123';
         return (
             <div>
                 <h2>Списки в которых я участвую</h2>
                 <ul className="list">
                     <li className="list-item">
-                        <Link className="list-link" to='/listItem' params={{ id: "123" }}>
+                        <Link className="list-link" to={`/list/${id}`}>
                             <span className="list-item_name">Италия</span>
                             <span className="list-item_date">до: 15.05.2017</span>
                         </Link>
                     </li>
                     <li className="list-item">
-                        <span className="list-item_name">Партугалия</span>
-                        <span className="list-item_date">до: 20.06.2017</span>
+                        <Link className="list-link" to='/list/bus'>
+                            <span className="list-item_name">Партугалия</span>
+                            <span className="list-item_date">до: 20.06.2017</span>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -34,4 +37,4 @@ class Lists extends Component {
     }
 }
 
-export default Lists;
+export default List;
