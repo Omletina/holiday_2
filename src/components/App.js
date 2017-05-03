@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router'
+import Navigation from '../components/navigation';
+import { Link } from 'react-router-dom';
 
 class App extends Component {
 
@@ -7,10 +8,7 @@ class App extends Component {
         return (
             <div className='container'>
                 <h1>App</h1>
-                <ul>
-                    <li><Link to='/admin'>Admin</Link></li>
-                    <li><Link to='/genre'>Genre</Link></li>
-                </ul>
+                <Navigation />
                 {/* добавили вывод потомков */}
                 {this.props.children}
             </div>

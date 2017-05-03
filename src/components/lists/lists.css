@@ -1,0 +1,9 @@
+.list {}
+.list-item {}
+.list-item_name {
+    display: inline-block;
+    margin-right: 10px;
+}
+.list-item_date {
+    display: inline-block;
+}
