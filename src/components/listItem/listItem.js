@@ -19,18 +19,19 @@ class ListItem extends Component {
 
 
     render() {
-        debugger;
-        //const {listId} = this.props;
 
-        const ListItem = ({ match }) => (
-            <div>{ match.params.id }</div>
+        const { match } = this.props;
+
+
+        const ListItem = (match) => (
+            <div>{match.params.id}</div>
         );
-        debugger;
+
 
         return (
             <div>
                 <h3>Описание списка</h3>
-                {/*<div>{listId}</div>*/}
+                {ListItem(match)}
             </div>
         );
     }

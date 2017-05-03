@@ -24,18 +24,16 @@ const routes = [
     },
     {
         path: '/list',
-        component: List,
-        routes: [
-            {
-                path: '/list/:id',
-                component: ListItem
-            },
-            {
-                path: '/list/bus',
-                component: Page_2
-            },
-        ]
-    }
+        component: List
+    },
+    {
+        path: '/listItem/:id',
+        component: ListItem
+    },
+    {
+        path: '/listItem/bus',
+        component: Page_2
+    },
 ];
 
 const RouteWithSubRoutes = (route) => (
