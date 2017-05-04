@@ -1,18 +1,23 @@
 import React, {Component, PropTypes} from 'react';
 import { Link } from 'react-router-dom';
-
-import dictionaryList from "../../dictionary/dictionary_list"
+import { loadAllList } from '../../AC/list'
+import { connect } from 'react-redux'
 import './list.css'
 
 
 class List extends Component {
 
-    static propTypes = {};
+    static propTypes = {
+        // list: PropTypes.array.isRequired
+    };
 
 
 
     componentWillMount(){}
-    componentDidMount(){}
+    componentDidMount(){
+        debugger;
+        this.props.loadAllList();
+    }
     componentWillReceiveProps(){}
     componentWillUpdate(){}
     componentDidUpdate(){}
@@ -34,7 +39,7 @@ class List extends Component {
             { "id": 0, "country": "Япония", "date": 1493815874684 },
             { "id": 1, "country": "Испания", "date": 1464728400000 }
         ];
-
+        debugger;
         const list = this.createList(dictList);
 
 
@@ -49,5 +54,6 @@ class List extends Component {
     }
 }
 
-
-export default List;
+export default connect(state=>({
+    list: state.list
+}), {loadAllList} )(List);
