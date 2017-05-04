@@ -1,13 +1,15 @@
 import React, {Component, PropTypes} from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import dictionaryList from "../../dictionary/dictionary_list"
 import './list.css'
 
-
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 class List extends Component {
 
     static propTypes = {};
+
+
 
     componentWillMount(){}
     componentDidMount(){}
@@ -17,29 +19,35 @@ class List extends Component {
     componentWillUnmount(){}
 
 
+    createList = dictList => dictList.map(item =>
+         <li className="list-item" key={item.id}>
+            <Link className="list-link" to={`/listItem/${item.id}`}>
+                <span className="list-item_name">{item.country}</span>
+                <span className="list-item_date">до: {item.date}</span>
+            </Link>
+         </li>
+    );
+
+
     render() {
-        const id = '123';
+        const dictList = [
+            { "id": 0, "country": "Япония", "date": 1493815874684 },
+            { "id": 1, "country": "Испания", "date": 1464728400000 }
+        ];
+
+        const list = this.createList(dictList);
+
 
         return (
             <div>
                 <h2>Списки в которых я участвую</h2>
                 <ul className="list">
-                    <li className="list-item">
-                        <Link className="list-link" to={`/listItem/${id}`}>
-                            <span className="list-item_name">Италия</span>
-                            <span className="list-item_date">до: 15.05.2017</span>
-                        </Link>
-                    </li>
-                    <li className="list-item">
-                        <Link className="list-link" to='/listItem/bus'>
-                            <span className="list-item_name">Партугалия</span>
-                            <span className="list-item_date">до: 20.06.2017</span>
-                        </Link>
-                    </li>
+                    { list }
                 </ul>
             </div>
         );
     }
 }
+
 
 export default List;

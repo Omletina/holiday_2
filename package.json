@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run dev\"",
+    "start": "concurrently \"npm run dev\" \"npm run server\"",
     "api": "node simple_api/server.js",
     "dev": "webpack-dev-server --hot --inline",
-    "build": "webpack"
+    "build": "webpack",
+    "server": "json-server db.json –w"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,11 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
+    "concurrently": "^3.4.0",
     "css-loader": "^0.26.0",
+    "json-server": "^0.10.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
-    "concurrently": "^3.4.0",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
