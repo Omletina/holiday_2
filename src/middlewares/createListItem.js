@@ -1,15 +1,21 @@
+import {ApiService} from './../services/api-service';
+
+const api = new ApiService();
+
+
 export default store => next => action => {
     const { createListItem, ...rest } = action;
     if(!createListItem) return next(action);
 
-    fetch(createListItem.url,{
-        method: createListItem.request,
-        body: JSON.stringify(createListItem.param)
-    })
-        .then(function(response) {
-            debugger;
-            return response.json();
-        })
+        api.post('list', createListItem.param)
+        // fetch(createListItem.url,{
+        //     method: createListItem.request,
+        //     body: JSON.stringify(createListItem.param)
+        // })
+        //     .then(function(response) {
+        //         debugger;
+        //         return response.json();
+        //     })
         .then(function(response) {
             debugger;
             next({...rest, response});
