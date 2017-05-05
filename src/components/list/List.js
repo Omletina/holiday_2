@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import { Link } from 'react-router-dom';
-import { loadAllList } from '../../AC/list'
+import { loadAllList, createListItem } from '../../AC/list'
 import { connect } from 'react-redux'
 import './list.css'
 
@@ -8,14 +8,12 @@ import './list.css'
 class List extends Component {
 
     static propTypes = {
-        // list: PropTypes.array.isRequired
+        list: PropTypes.array.isRequired
     };
-
 
 
     componentWillMount(){}
     componentDidMount(){
-        debugger;
         this.props.loadAllList();
     }
     componentWillReceiveProps(){}
@@ -28,32 +26,53 @@ class List extends Component {
          <li className="list-item" key={item.id}>
             <Link className="list-link" to={`/listItem/${item.id}`}>
                 <span className="list-item_name">{item.country}</span>
-                <span className="list-item_date">до: {item.date}</span>
+                <span className="list-item_date">до: {this.formatDate(item.date)}</span>
             </Link>
          </li>
     );
 
+    formatDate = date =>{
+        var newDate = new Date(+date);
+
+        var dd = newDate.getDate();
+        if (dd < 10) dd = '0' + dd;
+
+        var mm = newDate.getMonth() + 1;
+        if (mm < 10) mm = '0' + mm;
+
+        var yy = newDate.getFullYear() % 100;
+        if (yy < 10) yy = '0' + yy;
+
+        return dd + '.' + mm + '.' + yy;
+    };
+
+    handleCreateItem = ev => {
+        ev.preventDefault();
+        const { createListItem } = this.props;
+        createListItem();
+        //createListItem(article.id)
+    };
+
 
     render() {
-        const dictList = [
-            { "id": 0, "country": "Япония", "date": 1493815874684 },
-            { "id": 1, "country": "Испания", "date": 1464728400000 }
-        ];
-        debugger;
-        const list = this.createList(dictList);
+
+        const { list } = this.props;
+        const listItems = this.createList(list);
 
 
         return (
             <div>
                 <h2>Списки в которых я участвую</h2>
                 <ul className="list">
-                    { list }
+                    { listItems }
                 </ul>
+                <button onClick={this.handleCreateItem}>Создать новый список</button>
             </div>
         );
     }
 }
 
+
 export default connect(state=>({
     list: state.list
-}), {loadAllList} )(List);
+}), {loadAllList, createListItem} )(List);

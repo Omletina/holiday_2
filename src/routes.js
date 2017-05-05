@@ -1,5 +1,9 @@
 import React from 'react';
-import Root from './components/Root'
+import App from './components/App'
+import { Provider } from 'react-redux'
+import store from './store'
+
+
 import List from './components/list/List'
 import Page_2 from './components/page_2/Page_2'
 import ListItem from './components/listItem/ListItem'
@@ -16,7 +20,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 const routes = [
     {
         path: '/',
-        component: Root
+        component: App
     },
     {
         path: '/page_2',
@@ -45,13 +49,15 @@ const RouteWithSubRoutes = (route) => (
 
 
 export default (
-    <Router>
-        <div>
-            {routes.map((route, i) => (
-                <RouteWithSubRoutes key={i} {...route} />
-            ))}
-        </div>
-    </Router>
+    <Provider store={store}>
+        <Router>
+            <div>
+                {routes.map((route, i) => (
+                    <RouteWithSubRoutes key={i} {...route} />
+                ))}
+            </div>
+        </Router>
+    </Provider>
 );
 
 

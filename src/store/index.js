@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from '../reducer'
 import api from '../middlewares/api'
+import createListItem from '../middlewares/createListItem'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const enhancer = applyMiddleware(api);
+const enhancer = applyMiddleware(api, createListItem);
 const store = createStore(reducer, {}, composeEnhancers(enhancer));
 
 window.store = store;

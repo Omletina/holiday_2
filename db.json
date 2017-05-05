@@ -1,10 +1,37 @@
 {
   "list": [
-    { "id": 0, "country": "Япония", "date": "1493815874684" },
-    { "id": 1, "country": "Испания", "date": "1464728400000" }
+    {
+      "id": 0,
+      "country": "Япония",
+      "date": "1493815874684"
+    },
+    {
+      "id": 1,
+      "country": "Испания",
+      "date": "1464728400000"
+    },
+    {
+      "id": 2
+    },
+    {
+      "country": "Индонезия",
+      "date": "1493965864740",
+      "id": 3
+    },
+    {
+      "country": "Индонезия",
+      "date": "1493965864740",
+      "id": 4
+    }
   ],
   "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "name": "typicode"
+  }
 }

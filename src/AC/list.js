@@ -1,4 +1,4 @@
-import { LOAD_ADD_LIST } from '../constants'
+import { LOAD_ADD_LIST, CREATE_LIST_ITEM } from '../constants'
 
 export function loadAllList() {
     return {
@@ -6,6 +6,21 @@ export function loadAllList() {
         callAPI:{
             request: 'GET',
             url: 'http://localhost:3000/list'
+        }
+
+    }
+}
+
+export function createListItem() {
+    return {
+        type: CREATE_LIST_ITEM,
+        createListItem:{
+            request: 'POST',
+            url: 'http://localhost:3000/list',
+            param: {
+                "country": "Индонезия",
+                "date": "1493965864740"
+            }
         }
 
     }
