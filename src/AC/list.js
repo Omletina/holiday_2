@@ -1,4 +1,4 @@
-import { LOAD_ADD_LIST, CREATE_LIST_ITEM } from '../constants'
+import { LOAD_ADD_LIST, CREATE_LIST_ITEM, LOAD_LIST_ITEM } from '../constants'
 
 export function loadAllList() {
     return {
@@ -20,7 +20,24 @@ export function createListItem() {
             param: {
                 "country": "Индонезия",
                 "date": "1493965864740"
+            },
+            urlItem: 'listItem',
+            paramItem: {
+                "country": "Индонезия",
+                "date": "1493965864740",
+                "param": []
             }
+        }
+
+    }
+}
+
+export function loadListItem(id) {
+    return {
+        type: LOAD_LIST_ITEM,
+        callAPI:{
+            request: 'GET',
+            url: 'listItem/' + id
         }
 
     }

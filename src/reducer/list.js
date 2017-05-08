@@ -1,4 +1,4 @@
-import { LOAD_ADD_LIST, CREATE_LIST_ITEM } from '../constants'
+import { LOAD_ADD_LIST, CREATE_LIST_ITEM, LOAD_LIST_ITEM } from '../constants'
 
 export default (listState=[], action) => {
     const { type, payload, response } = action;

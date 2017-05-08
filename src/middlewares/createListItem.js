@@ -6,11 +6,16 @@ export default store => next => action => {
     if(!createListItem) return next(action);
 
     api.post(createListItem.url, createListItem.param)
-    .then(function(response) {
-        next({...rest, response});
-    })
-    .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-    });
+        .then(function(response) {
+            api.post(createListItem.urlItem, createListItem.paramItem)
+                .catch(function(err) {
+                    console.log('Fetch Error :-S', err);
+                });
+            next({...rest, response});
+        })
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });
+
 
 }
