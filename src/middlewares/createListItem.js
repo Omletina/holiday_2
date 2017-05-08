@@ -17,7 +17,6 @@ export default store => next => action => {
         //         return response.json();
         //     })
         .then(function(response) {
-            debugger;
             next({...rest, response});
         })
         .catch(function(err) {

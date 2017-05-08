@@ -8,7 +8,8 @@ export default (listState=[], action) => {
             return response;
 
         case CREATE_LIST_ITEM:
-            return response;
+            listState.push(response);
+            return listState;
     }
     return listState
 }

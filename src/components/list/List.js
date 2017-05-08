@@ -48,8 +48,8 @@ class List extends Component {
 
     handleCreateItem = ev => {
         ev.preventDefault();
-        const { createListItem } = this.props;
-        createListItem();
+        const { createListItem, list } = this.props;
+        createListItem(list.id);
         //createListItem(article.id)
     };
 
@@ -73,6 +73,6 @@ class List extends Component {
 }
 
 
-export default connect(state=>({
+export default connect(state => ({
     list: state.list
-}), {loadAllList, createListItem} )(List);
+}), {loadAllList, createListItem}, null, {pure: false} )(List);
