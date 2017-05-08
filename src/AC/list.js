@@ -5,7 +5,7 @@ export function loadAllList() {
         type: LOAD_ADD_LIST,
         callAPI:{
             request: 'GET',
-            url: 'http://localhost:3000/list'
+            url: 'list'
         }
 
     }
@@ -16,7 +16,7 @@ export function createListItem() {
         type: CREATE_LIST_ITEM,
         createListItem:{
             request: 'POST',
-            url: 'http://localhost:3000/list',
+            url: 'list',
             param: {
                 "country": "Индонезия",
                 "date": "1493965864740"

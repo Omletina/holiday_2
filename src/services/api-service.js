@@ -37,7 +37,7 @@ export class ApiService {
         const hasParams = args && typeof args === 'object';
 
         if (hasParams) {
-            for (let k in arg) {
+            for (let k in args) {
                 if (args.hasOwnProperty(k)) {
                     params.push(`${k}=${encodeURI(args[k])}`);
                 }
@@ -54,6 +54,15 @@ export class ApiService {
             (params.length ? '?' + params.join('&') : '');
     }
 
+    isEmptyObject(obj) {
+        for (var i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     /**
      * Метод для отправки запроса
@@ -63,15 +72,18 @@ export class ApiService {
     rq(url, type, payload = {}) {
         let data = JSON.stringify(payload);
 
-        return fetch(url, {
-                method: type,
-                mode: 'cors',
-                headers: new Headers({
-                    'Accept': 'application/json, */*',
-                    'Content-Type': 'application/json'
-                }),
-                body: data
+        var option = {
+            method: type,
+            mode: 'cors',
+            headers: new Headers({
+                'Accept': 'application/json, */*',
+                'Content-Type': 'application/json'
             })
+        };
+        if(type.toUpperCase()!='GET'){
+            option['body'] =  data;
+        }
+        return fetch(url, option)
             .then(res => {
                 if (res.ok) {
                     return res.json();
