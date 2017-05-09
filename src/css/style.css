@@ -1,0 +1,27 @@
+html, body, input, button {
+  font-family : "OpenSans";
+  font-size   : 16px;
+}
+
+/*--- Цвета сайта : start ------------------*/
+.color {
+  color: #7FFFD4;
+  color: #40E0D0;
+  color: #4682B4;
+  color: #808080;
+}
+/*--- Цвета сайта : end --------------------*/
+
+/*--- Clearfix : start ---------------*/
+.cl:before,
+.cl:after { content: " "; display: table;}
+.cl:after { clear: both; }
+/*--- Clearfix : end -----------------*/
+
+.easing, .easing * { 
+  -webkit-transition: all 0.3s ease 0s; 
+  -moz-transition: all 0.3s ease 0s; 
+  -o-transition: all 0.3s ease 0s;
+   transition: all 0.3s ease 0s; }
+
+  

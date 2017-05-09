@@ -1,0 +1,97 @@
+/* Кнопки */
+
+.button-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+/* Расположение кнопок*/
+/* Прижаты к левому краю*/
+.button-wrap.left {  justify-content: flex-start;}
+.button-wrap.left button { margin-right: 20px;}
+
+/*Прижаты к правому краю*/
+.button-wrap.right { justify-content: flex-end; }
+.button-wrap.right button { margin-left: 20px; }
+
+/*По центру*/
+.button-wrap.center { justify-content: center; }
+.button-wrap.center button { margin: 0 10px; }
+
+/*Прижаты по краям, остальные распологаются по равным отступам*/
+.button-wrap.justify { justify-content: space-between; }
+
+/*Распологаются по всей площади, но с отступами от краев.*/
+.button-wrap.around { justify-content: space-around; }
+
+/*Расположение кнопок : END*/
+
+/*Вид кнопок*/
+button, a { cursor: pointer; }
+
+/* Виды кнопок */
+/* Голубая кнопка */
+button.blue, a.blue {
+    padding: 13px 45px;
+    background: #4682B4;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+button.blue:hover, a.blue:hover {
+    text-decoration: none;
+}
+
+button.blue:after, a.blue:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    left: -20px;
+    bottom: -20px;
+    z-index: 1;
+    border-radius: 100%;
+    box-shadow: 0 0 0 0 #40E0D0;
+    opacity: 0;
+    -webkit-transition: all 0.8s ease 0s;
+    -moz-transition: all 0.8s ease 0s;
+    -o-transition: all 0.8s ease 0s;
+    transition: all 0.8s ease 0s;
+}
+button.blue:hover:after {
+    opacity: 1;
+    background: #40E0D0;
+    box-shadow: 0 0 0 150px #40E0D0;
+    border-radius: 100%;
+    -webkit-transition: all 1s ease 0s;
+    -moz-transition: all 1s ease 0s;
+    -o-transition: all 1s ease 0s;
+    transition: all 1s ease 0s;
+
+}
+button.blue .blue-title {
+    position: relative;
+    z-index: 2;
+}
+
+
+button.blue:disabled, a.blue:disabled {
+    color:#fff;
+    background-color: #D3D3D3;
+    cursor: auto;
+}
+/* Голубая кнопка : END */
+
+/*Использование*/
+/*
+div.button-wrap.left
+    button.blue кнопка
+    button.blue[ disabled ] кнопка
+*/

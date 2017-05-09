@@ -1,3 +1,4 @@
 export const LOAD_ADD_LIST = 'LOAD_ADD_LIST';
 export const CREATE_LIST_ITEM = 'CREATE_LIST_ITEM';
 export const LOAD_LIST_ITEM = 'LOAD_LIST_ITEM';
+export const DELETE_CHECKBOX = 'DELETE_CHECKBOX';
