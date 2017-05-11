@@ -1,4 +1,4 @@
-import { LOAD_ADD_LIST, CREATE_LIST_ITEM, LOAD_LIST_ITEM } from '../constants'
+import { LOAD_ADD_LIST, CREATE_LIST_ITEM, LOAD_LIST_ITEM, LOAD_ITEM_PARAM } from '../constants'
 
 export function loadAllList() {
     return {
@@ -37,8 +37,17 @@ export function loadListItem(id) {
         type: LOAD_LIST_ITEM,
         callAPI:{
             request: 'GET',
-            url: 'listItem/' + id
+            url: 'list?id='+id
         }
+    }
+}
 
+export function loadItemParam(id) {
+    return {
+        type: LOAD_ITEM_PARAM,
+        callAPI:{
+            request: 'GET',
+            url: 'itemParam?id='+id
+        }
     }
 }

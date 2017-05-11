@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import { loadListItem } from '../../AC/list'
+import { loadListItem, loadItemParam } from '../../AC/list'
 import Checkbox from '../сheckbox/Checkbox';
 import { connect } from 'react-redux'
 import { Helper } from '../../services/helper';
@@ -7,16 +7,19 @@ import './listItem.css'
 
 class ListItem extends Component {
 
-    // static propTypes = {
-    //     id: PropTypes.string
-    // };
+    static propTypes = {
+        listItem: PropTypes.object,
+        match: PropTypes.object
+    };
 
     helper = new Helper();
 
     componentWillMount(){}
     componentDidMount(){
-        const { match, loadListItem } = this.props;
+        // Передаем в экшен id страницы, чтобы получить данные
+        const { match, loadListItem, loadItemParam } = this.props;
         loadListItem(match.params.id);
+        loadItemParam(match.params.id)
     }
     componentWillReceiveProps(){}
     componentWillUpdate(){}
@@ -26,22 +29,21 @@ class ListItem extends Component {
 
     render() {
 
-        const { match, listItem } = this.props;
+        const { match, listItem, itemParam } = this.props;
 
         const ListItem = (match) => (
             <div>{match.params.id}</div>
         );
 
+        const checkboxItems = (itemParam && itemParam.length > 0) ? itemParam.map(item => <Checkbox item={item} key={item.id} />) : null;
 
-        const checkboxItems = (listItem.param && listItem.param.length > 0) ? listItem.param.map(item => <Checkbox item={item} key={item.id} />) : null;
-
-        const country = listItem && listItem.country;
-        const date = listItem.date ? this.helper.formatDate(listItem.date) : null;
+        const itemCountry = listItem && listItem.country;
+        const itemDate = (listItem &&  listItem.date) ? this.helper.formatDate(listItem.date) : null;
 
         return (
             <div>
-                <h3>{country}. Список документов для получения визы.</h3>
-                <h3>Собрадь документы до { date }</h3>
+                <h3>{ itemCountry }. Список документов для получения визы.</h3>
+                <h3>Собрадь документы до { itemDate }</h3>
                 { ListItem(match) }
                 { checkboxItems }
             </div>
@@ -51,7 +53,8 @@ class ListItem extends Component {
 
 export default connect(state =>{
     return {
-        listItem: state.listItem
+        listItem: state.listItem["0"],
+        itemParam: state.itemParam["0"] && state.itemParam["0"].param
     }
-}, {loadListItem}, null, {pure: false} )(ListItem);
-//export default ListItem;
+}, {loadListItem, loadItemParam}, null, {pure: false} )(ListItem);
+
