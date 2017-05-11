@@ -35,7 +35,7 @@ class ListItem extends Component {
             <div>{match.params.id}</div>
         );
 
-        const checkboxItems = (itemParam && itemParam.length > 0) ? itemParam.map(item => <Checkbox item={item} key={item.id} />) : null;
+        const checkboxItems = (itemParam && itemParam.length > 0) ? itemParam.map(item => <Checkbox parentId={match.params.id} item={item} key={item.id} />) : null;
 
         const itemCountry = listItem && listItem.country;
         const itemDate = (listItem &&  listItem.date) ? this.helper.formatDate(listItem.date) : null;

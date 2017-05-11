@@ -27,8 +27,8 @@ class Checkbox extends Component {
 
     handleDeleteCheckbox = ev=>{
         ev.preventDefault();
-        const { deleteCheckbox, item } = this.props;
-        deleteCheckbox(item.id)
+        const { deleteCheckbox, item, parentId } = this.props;
+        deleteCheckbox(parentId, item.id)
     };
 
 

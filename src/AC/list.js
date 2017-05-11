@@ -23,8 +23,6 @@ export function createListItem() {
             },
             urlItem: 'listItem',
             paramItem: {
-                "country": "Индонезия",
-                "date": "1493965864740",
                 "param": []
             }
         }

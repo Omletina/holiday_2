@@ -13,6 +13,13 @@ export class ApiService {
         return this.rq(this.getUrl(path, params), 'POST', data);
     }
 
+    put(path, ...args) {
+        const data = args.pop();
+        const params = args.pop();
+
+        return this.rq(this.getUrl(path, params), 'PUT', data);
+    }
+
 
 
     // api ============= === =======
@@ -31,9 +38,7 @@ export class ApiService {
      * @memberOf ApiService
      */
     getUrl(url, args) {
-
         let params = [];
-
         const hasParams = args && typeof args === 'object';
 
         if (hasParams) {
@@ -54,15 +59,6 @@ export class ApiService {
             (params.length ? '?' + params.join('&') : '');
     }
 
-    isEmptyObject(obj) {
-        for (var i in obj) {
-            if (obj.hasOwnProperty(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 
     /**
      * Метод для отправки запроса
@@ -71,7 +67,6 @@ export class ApiService {
      */
     rq(url, type, payload = {}) {
         let data = JSON.stringify(payload);
-
         var option = {
             method: type,
             mode: 'cors',
