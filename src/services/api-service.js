@@ -78,6 +78,7 @@ export class ApiService {
         if(type.toUpperCase()!='GET'){
             option['body'] =  data;
         }
+
         return fetch(url, option)
             .then(res => {
                 if (res.ok) {

@@ -8,7 +8,7 @@ export function deleteCheckbox(parentId, id) {
         },
         deleteCheckbox: {
             request: 'PUT',
-            url: 'itemParam?id='+parentId,
+            url: 'itemParam/'+parentId,
             checkboxId: id
 
         }

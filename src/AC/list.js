@@ -35,7 +35,7 @@ export function loadListItem(id) {
         type: LOAD_LIST_ITEM,
         callAPI:{
             request: 'GET',
-            url: 'list?id='+id
+            url: 'list/'+id
         }
     }
 }
@@ -45,7 +45,7 @@ export function loadItemParam(id) {
         type: LOAD_ITEM_PARAM,
         callAPI:{
             request: 'GET',
-            url: 'itemParam?id='+id
+            url: 'itemParam/'+id
         }
     }
 }

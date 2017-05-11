@@ -53,8 +53,8 @@ class ListItem extends Component {
 
 export default connect(state =>{
     return {
-        listItem: state.listItem["0"],
-        itemParam: state.itemParam["0"] && state.itemParam["0"].param
+        listItem: state.listItem,
+        itemParam: state.itemParam && state.itemParam.param
     }
 }, {loadListItem, loadItemParam}, null, {pure: false} )(ListItem);
 

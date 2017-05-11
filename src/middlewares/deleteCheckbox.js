@@ -12,17 +12,15 @@ export default store => next => action => {
         .then(function(response) {
             // Удаляем параметр
             var newParam = [];
-            if (!!response && response[0]){
-                newParam = response[0].param.filter(item => item.id != deleteCheckbox.checkboxId)
+            if (!!response && response.param.length > 0){
+                newParam = response.param.filter(item => item.id != deleteCheckbox.checkboxId)
             }
 
-            api.put(deleteCheckbox.url, {"id": response[0].id, "param": newParam})
+            api.put(deleteCheckbox.url, {"param": newParam})
                 .then(function(response) {
-                    debugger;
                     next({...rest, response});
                 })
                 .catch(function(err) {
-                    debugger;
                     console.log('Fetch Error :-S', err);
                 });
 

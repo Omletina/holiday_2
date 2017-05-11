@@ -1,6 +1,6 @@
 import { LOAD_LIST_ITEM } from '../constants'
 
-export default (listItemState=[], action) => {
+export default (listItemState={}, action) => {
     const { type, payload, response } = action;
 
     switch (type){
