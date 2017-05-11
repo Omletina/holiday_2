@@ -12,7 +12,8 @@ class Checkbox extends Component {
         item: PropTypes.shape({
             id: PropTypes.number.isRequired,
             text: PropTypes.string,
-            more: PropTypes.string
+            more: PropTypes.string,
+            default: PropTypes.boolean
         }).isRequired,
         //from connect
         deleteCheckbox: PropTypes.func
@@ -33,8 +34,10 @@ class Checkbox extends Component {
 
 
     render(){
-        const {item} = this.props;
+        const {item, isRemove } = this.props;
         const addMore = item.more ? <CheckboxMore text={item.more} /> : null;
+        const remove = isRemove ? <a href="#" onClick={this.handleDeleteCheckbox}>удалить</a> : null;
+
         return (
             <label className="checkbox">
                 <input className="checkbox_input" type="checkbox" name="checkbox_" defaultValue={ item.id }/>
@@ -42,7 +45,7 @@ class Checkbox extends Component {
                 <span className="checkbox_label-emu">{item.text}</span>
                 { addMore }
                 <br/>
-                <a href="#" onClick={this.handleDeleteCheckbox}>удалить</a>
+                { remove }
             </label>
         )
     }

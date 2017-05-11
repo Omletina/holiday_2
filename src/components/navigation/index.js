@@ -7,8 +7,8 @@ function Navigation() {
     return (
         <div className="navigation">
             <ul className="navigation-list">
-                <li className="navigation-item"><Link className="navigation-link" to='/list'>List</Link></li>
-                <li className="navigation-item"><Link className="navigation-link" to='/page_2'>Page_2</Link></li>
+                <li className="navigation-item"><Link className="navigation-link" to='/list'>Мои списки</Link></li>
+                <li className="navigation-item"><Link className="navigation-link" to='/createList'>Создать новый список</Link></li>
             </ul>
         </div>
     )

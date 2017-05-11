@@ -5,7 +5,7 @@ import store from './store'
 
 
 import List from './components/list/List'
-import Page_2 from './components/page_2/Page_2'
+import Page_2 from './components/createList/CreateList'
 import ListItem from './components/listItem/ListItem'
 
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
@@ -23,7 +23,7 @@ const routes = [
         component: App
     },
     {
-        path: '/page_2',
+        path: '/createList',
         component: Page_2
     },
     {
