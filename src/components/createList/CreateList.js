@@ -10,6 +10,10 @@ class CreateList extends Component {
         defaultParam: PropTypes.array
     };
 
+    state = {
+        country: ''
+    };
+
     componentWillMount(){}
     componentDidMount(){
         const { loadDefaultParam } = this.props;
@@ -20,6 +24,18 @@ class CreateList extends Component {
     componentDidUpdate(){}
     componentWillUnmount(){}
 
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        debugger;
+    };
+
+    handleCountryChange = (e) => {
+        this.setState({
+            country: e.target.value
+        })
+    };
+
     render() {
 
         const { defaultParam } = this.props;
@@ -27,15 +43,15 @@ class CreateList extends Component {
         const checkboxItems = (defaultParam && defaultParam.length > 0) ? defaultParam.map(item => <Checkbox isRemove={false} item={item} key={item.id} />) : null;
 
         return (
-            <div>
+            <form onSubmit={this.handleSubmit}>
                 <div>Создайте новый список документов для получения визы.</div>
                 <div>
                     <lable>Куда отправляетесь, страна</lable>
-                    <input type="text" name="country" />
+                    <input type="text" name="country" value={this.state.country} onChange={this.handleCountryChange} />
                 </div>
                 <div>
                     <lable>Дата отправления, страна</lable>
-                    <input type="text" name="date" />
+                    <input type="text" name="date"  />
                 </div>
                 <div>
                     <lable>Документы которые нужно получить</lable>
@@ -46,7 +62,7 @@ class CreateList extends Component {
                 <div>
                     <input type="submit" value="Создать"/>
                 </div>
-            </div>
+            </form>
         );
     }
 }
