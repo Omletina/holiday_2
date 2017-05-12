@@ -34,13 +34,13 @@ class Checkbox extends Component {
 
 
     render(){
-        const {item, isRemove } = this.props;
+        const {item, isRemove, func } = this.props;
         const addMore = item.more ? <CheckboxMore text={item.more} /> : null;
         const remove = isRemove ? <a href="#" onClick={this.handleDeleteCheckbox}>удалить</a> : null;
-
+        // debugger;
         return (
             <label className="checkbox">
-                <input className="checkbox_input" type="checkbox" name="checkbox_" defaultValue={ item.id }/>
+                <input className="checkbox_input" type="checkbox" name={`checkbox_${item.id}`} defaultValue={ item.id } onChange={ func }/>
                 <span className="checkbox_input-emu"/>
                 <span className="checkbox_label-emu">{item.text}</span>
                 { addMore }

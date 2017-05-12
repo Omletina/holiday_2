@@ -92,6 +92,8 @@ button.blue:disabled, a.blue:disabled {
 /*Использование*/
 /*
 div.button-wrap.left
-    button.blue кнопка
-    button.blue[ disabled ] кнопка
+    button.blue
+        span.blue-title кнопка
+    button.blue[ disabled ]
+        span.blue-title кнопка
 */
