@@ -1,3 +1,19 @@
-.control-group {}
-.control-label {}
-.control-text {}
+.control-group {
+    /*display: block;*/
+}
+.control-label {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+    font-size:14px;
+    font-weight: 500;
+}
+.control-text {
+    display: block;
+    margin-bottom: 20px;
+}
+.control-multi {
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}

@@ -2,6 +2,9 @@ import React, {Component, PropTypes} from 'react';
 import { loadDefaultParam } from '../../AC/defaultList'
 import Checkbox from '../сheckbox/Checkbox';
 import { connect } from 'react-redux'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+import 'react-datepicker/dist/react-datepicker.css';
 import { Helper } from '../../services/helper';
 
 class CreateList extends Component {
@@ -31,6 +34,11 @@ class CreateList extends Component {
     };
 
     handleChange = field => ev => {
+        if(field == 'date'){
+            this.setState({[field]: ev});
+            return;
+        }
+        // У date другой event, поэтому проверка после проверки на date
         if (ev.target.value.length > 5) return;
         if(field == 'vParam'){
             let arr = this.state.vParam;
@@ -54,18 +62,23 @@ class CreateList extends Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <div>Создайте новый список документов для получения визы.</div>
+                <p><strong>Создайте новый список документов для получения визы.</strong></p>
                 <div className="control-group">
                     <lable className="control-label">Куда отправляетесь, страна</lable>
                     <input className="control-text" type="text" name="country" value={this.state.country} onChange={this.handleChange('country')} />
                 </div>
-                <div>
-                    <lable>Дата отправления</lable>
-                    <input type="text" name="date" value={this.state.date} onChange={this.handleChange('date')} />
+                <div className="control-group">
+                    <lable className="control-label">Дата отправления в отпуск</lable>
+                    <DatePicker
+                        className="control-text"
+                        dateFormat="DD.MM.YYYY"
+                        selected={this.state.date}
+                        onChange={this.handleChange('date')}
+                    />
                 </div>
-                <div>
-                    <lable>Документы которые нужно получить</lable>
-                    <div>
+                <div className="control-group">
+                    <lable className="control-label">Документы которые нужно получить</lable>
+                    <div className="control-multi">
                         { checkboxItems }
                     </div>
                 </div>

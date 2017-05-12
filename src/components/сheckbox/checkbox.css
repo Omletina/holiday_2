@@ -33,7 +33,10 @@
     transition: all 0.3s ease 0s;
   }
   .checkbox_input:checked + .checkbox_input-emu:after { opacity: 1;}
-  .checkbox_label-emu { display: inline-block;}
+  .checkbox_label-emu {
+    display: inline-block;
+    font-size:14px;
+  }
 
   .checkbox_more {
     display: inline;
