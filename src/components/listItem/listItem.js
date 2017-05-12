@@ -31,10 +31,6 @@ class ListItem extends Component {
 
         const { match, listItem, itemParam } = this.props;
 
-        const ListItem = (match) => (
-            <div>{match.params.id}</div>
-        );
-
         const checkboxItems = (itemParam && itemParam.length > 0) ? itemParam.map(item => <Checkbox isRemove={true} parentId={match.params.id} item={item} key={item.id} />) : null;
 
         const itemCountry = listItem && listItem.country;
@@ -43,8 +39,7 @@ class ListItem extends Component {
         return (
             <div>
                 <h3>{ itemCountry }. Список документов для получения визы.</h3>
-                <h3>Собрадь документы до { itemDate }</h3>
-                { ListItem(match) }
+                <h3>Собрать документы до { itemDate }</h3>
                 { checkboxItems }
             </div>
         );

@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { loadAllList, createListItem } from '../../AC/list'
+import { loadAllList } from '../../AC/list'
 import { Helper } from '../../services/helper';
 import './list.css'
 
@@ -14,15 +14,9 @@ class List extends Component {
 
     helper = new Helper();
 
-    componentWillMount(){}
     componentDidMount(){
         this.props.loadAllList();
     }
-    componentWillReceiveProps(){}
-    componentWillUpdate(){}
-    componentDidUpdate(){}
-    componentWillUnmount(){}
-
 
     createList = dictList => dictList.map(item =>
          <li className="list-item" key={item.id}>
@@ -32,12 +26,6 @@ class List extends Component {
             </Link>
          </li>
     );
-
-    handleCreateItem = ev => {
-        ev.preventDefault();
-        const { createListItem, list } = this.props;
-        createListItem(list.id);
-    };
 
 
     render() {
@@ -51,7 +39,6 @@ class List extends Component {
                 <ul className="list">
                     { listItems }
                 </ul>
-                <button onClick={this.handleCreateItem}>Создать новый список</button>
             </div>
         );
     }
@@ -60,4 +47,4 @@ class List extends Component {
 
 export default connect(state => ({
     list: state.list
-}), {loadAllList, createListItem}, null, {pure: false} )(List);
+}), {loadAllList}, null, {pure: false} )(List);

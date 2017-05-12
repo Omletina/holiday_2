@@ -11,19 +11,19 @@ export function loadAllList() {
     }
 }
 
-export function createListItem() {
+export function createListItem(newList) {
     return {
         type: CREATE_LIST_ITEM,
         createListItem:{
             request: 'POST',
             url: 'list',
             param: {
-                "country": "Индонезия",
-                "date": "1493965864740"
+                "country": newList.country,
+                "date": newList.date
             },
-            urlItem: 'listItem',
+            urlItem: 'itemParam',
             paramItem: {
-                "param": []
+                "param": newList.param
             }
         }
 

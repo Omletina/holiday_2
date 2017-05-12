@@ -1,11 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import { loadDefaultParam } from '../../AC/defaultList'
+import { createListItem } from '../../AC/list'
 import Checkbox from '../сheckbox/Checkbox';
 import { connect } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import 'react-datepicker/dist/react-datepicker.css';
-import { Helper } from '../../services/helper';
+
 
 class CreateList extends Component {
 
@@ -30,7 +31,23 @@ class CreateList extends Component {
 
     handleSubmit = ev => {
         ev.preventDefault();
-        console.log('form is submitted. Country value is', this.state);
+        const { createListItem, defaultParam } = this.props;
+        let _sParam = [],
+            _date = +this.state.date._d,
+            _data = null;
+
+        // фильтруем параметр и передаем то, что нужно создаь
+        _sParam = defaultParam.filter(item =>{
+            return this.state.vParam.some(item_2 => item.id == item_2)
+        });
+
+        _data = {
+            country: this.state.country,
+            date: _date,
+            param: _sParam
+        };
+
+        createListItem(_data);
     };
 
     handleChange = field => ev => {
@@ -96,4 +113,4 @@ export default connect(state =>{
     return {
         defaultParam: state.defaultParam && state.defaultParam.param
     }
-}, {loadDefaultParam}, null, {pure: false} )(CreateList);
+}, {loadDefaultParam, createListItem}, null, {pure: false} )(CreateList);
